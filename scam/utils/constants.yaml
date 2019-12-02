@@ -1,0 +1,22 @@
+view:
+    angle_fov: 45.0
+    width: 800
+    height: 800
+    clipping_plane_near: 0.1
+    clipping_plane_far: 50.0
+
+lighting:
+    light_x_pos: 1.20
+    light_y_pos: 1.20
+    light_z_pos: 1.20
+    shininess: 100.0
+    const_attenuation: 2.0
+    linear_attenuation: 1.0
+    quadratic_attenuation: 0.5
+
+primitives:
+    ref_frame_radius: 0.01
+    ref_frame_slices: 20
+    ref_frame_stacks: 20
+    cylinder_slices: 32
+    cylinder_stacks: 32
