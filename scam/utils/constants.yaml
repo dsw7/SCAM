@@ -20,3 +20,49 @@ primitives:
     ref_frame_stacks: 20
     cylinder_slices: 32
     cylinder_stacks: 32
+
+hardware:
+    base:
+        length: 0.3
+        width: 0.3
+        height: 0.1
+        radius: 0.08
+
+    link1:
+        height: 0.4
+        width: 0.1
+        length: 0.15
+
+    cube1: 
+        height: 0.15
+        width: 0.15
+        length: 0.15
+
+    link2:
+        height: 0.05
+        width: 0.05
+        length: 0.5
+
+    cube2: 
+        height: 0.1
+        width: 0.1
+        length: 0.1
+
+    cube3: 
+        height: 0.1
+        width: 0.1
+        length: 0.1
+    
+    link3: 
+        height: 0.05
+        width: 0.05
+        length: 0.4
+
+    cube4: 
+        height: 0.05
+        width: 0.05
+        length: 0.05
+
+    probe:
+        height: 0.30
+

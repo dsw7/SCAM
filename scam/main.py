@@ -15,6 +15,8 @@ from utils.primitives import render_cylinder
 from utils.primitives import render_cube
 from utils.primitives import render_cuboid
 from utils.primitives import render_link
+from utils.manipulator import SCAM
+
 
 try:
     with open('utils/constants.yaml') as constants_file:
@@ -29,6 +31,7 @@ CLIP_PLANE_NEAR = CONSTANTS['view']['clipping_plane_near']
 CLIP_PLANE_FAR = CONSTANTS['view']['clipping_plane_far']
 
 
+"""
 def test_render_grid():
     render_grid()
 
@@ -70,6 +73,7 @@ def core():
     test_render_cube()
     test_render_cuboid()
     test_render_link()
+"""
     
 def main():
     pygame.init()
@@ -78,6 +82,9 @@ def main():
     set_frustum(ANGLE_FOV, WIDTH, HEIGHT, CLIP_PLANE_NEAR, CLIP_PLANE_FAR)
     set_camera_position()
     # setup_lighting()
+    
+    theta_1 = 0
+    theta_2 = 0
 
     while True:
         for event in pygame.event.get():
@@ -86,7 +93,13 @@ def main():
                 sys.exit()
 
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
-        core()
+        
+        theta_1 += -0.863
+        theta_2 += 0.455
+        
+        render_grid()
+        SCAM(0, 0, theta_1, theta_2).main()
+        
         pygame.display.flip()
         pygame.time.wait(10)
 
