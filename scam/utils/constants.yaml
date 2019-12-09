@@ -66,3 +66,8 @@ hardware:
     probe:
         height: 0.30
 
+kinematics:
+    theta_1_start: 0.00
+    theta_2_start: 0.00
+    net_cycles: 200
+

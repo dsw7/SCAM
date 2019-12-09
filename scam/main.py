@@ -9,6 +9,7 @@ from utils.view import set_frustum, set_camera_position
 from utils.lighting import setup_lighting
 from utils.primitives import render_grid
 from utils.manipulator import SCAM
+from utils.frontend import get_options_main
 
 
 try:
@@ -22,18 +23,21 @@ WIDTH = CONSTANTS['view']['width']
 HEIGHT = CONSTANTS['view']['height']
 CLIP_PLANE_NEAR = CONSTANTS['view']['clipping_plane_near']
 CLIP_PLANE_FAR = CONSTANTS['view']['clipping_plane_far']
+NET_CYCLES = CONSTANTS['kinematics']['net_cycles']
 
 
 def main():
+    d_theta_1, d_theta_2 = get_options_main()
     pygame.init()
     pygame.display.set_caption('SCAM')
     pygame.display.set_mode((WIDTH, HEIGHT), DOUBLEBUF|OPENGL)
     set_frustum(ANGLE_FOV, WIDTH, HEIGHT, CLIP_PLANE_NEAR, CLIP_PLANE_FAR)
     set_camera_position()
     setup_lighting()
-    
-    theta_1 = 0
-    theta_2 = 0
+
+    cycle = 0
+    theta_1_start = 0
+    theta_2_start = 0
 
     while True:
         for event in pygame.event.get():
@@ -42,15 +46,17 @@ def main():
                 sys.exit()
 
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
-        
-        theta_1 += -0.863
-        theta_2 += 0.455
-        
+
+        if cycle < NET_CYCLES:
+            cycle += 1
+            theta_1_start += d_theta_1
+            theta_2_start += d_theta_2
+
         render_grid()
-        SCAM(0, 0, theta_1, theta_2).main()
-        
+        SCAM(0, 0, theta_1_start, theta_2_start).main()
         pygame.display.flip()
         pygame.time.wait(10)
+
 
 if __name__ == '__main__':
     main()
