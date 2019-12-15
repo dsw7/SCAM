@@ -36,8 +36,8 @@ def main():
     setup_lighting()
 
     cycle = 0
-    theta_1_start = 0
-    theta_2_start = 0
+    theta_1 = 0
+    theta_2 = 0
 
     while True:
         for event in pygame.event.get():
@@ -49,11 +49,11 @@ def main():
 
         if cycle < NET_CYCLES:
             cycle += 1
-            theta_1_start += d_theta_1
-            theta_2_start += d_theta_2
+            theta_1 += d_theta_1
+            theta_2 += d_theta_2
 
         render_grid()
-        SCAM(0, 0, theta_1_start, theta_2_start).main()
+        SCAM(0, 0, theta_1, theta_2).main()
         pygame.display.flip()
         pygame.time.wait(10)
 
