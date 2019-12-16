@@ -51,6 +51,8 @@ def main():
             cycle += 1
             theta_1 += d_theta_1
             theta_2 += d_theta_2
+            
+            print(True)
 
         render_grid()
         SCAM(0, 0, theta_1, theta_2).main()
