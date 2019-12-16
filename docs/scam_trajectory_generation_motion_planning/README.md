@@ -154,7 +154,7 @@ The parabola that fits these requirements follows:
 A plot of this function is shown below. I have also shown the linear (constant) velocity plot. The areas of both plots are equivalent.
 </p>
 
-<img src="https://github.com/dsw7/SCAM/blob/master/SCAM_TRAJECTORY_GENERATION_MOTION_PLANNING/de_linearize_plot.png" width="500">
+<img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_trajectory_generation_motion_planning/de_linearize_plot.png" width="500">
 
 And here is a plot of the actual position of x as a function of t, or:
 
