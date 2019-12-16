@@ -5,9 +5,9 @@ Here I show how to make SCAM's end effector travel to some
 coordinates of choosing. To run the script, simply open a  
 prompt/terminal and input:  
 </p>
-
-    $ python3 /path/to/SCAM_GOTO/SCAM_GOTO.py  
-    
+```
+$ python3 /scam/main.py  
+``` 
 The prompt will return the following:  
 
 <img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_goto/example_UI.png" width="500" align=middle>  
