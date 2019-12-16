@@ -13,4 +13,4 @@ This is important for rendering realistic shading effects.
 
 Here is the new result:  
 
-<img src="https://github.com/dsw7/SCAM/blob/master/SCAM_NON_WIREFRAME/img_nonwireframe.png" width="400">  
+<img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_non_wireframe/img_nonwireframe.png" width="400">  
