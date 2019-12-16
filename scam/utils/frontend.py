@@ -3,6 +3,7 @@ from os import path
 from colorama import Fore, Style
 from yaml import safe_load
 from .inverse_kinematics import InverseKinematics, NoSolutionError
+from .joint_kinematics import TrajectoryGenerator
 
 
 try:
@@ -42,26 +43,34 @@ def get_options_from_user():
         if option == 'c':   # custom input coordinates
             x_coordinate = float(input('x = '))
             y_coordinate = float(input('y = '))
+            type_trajectory = float(input('Trajectory (L / P) = '))
             break
         elif option == 'd': # default input coordinates
             x_coordinate = -0.55
             y_coordinate = -0.55
+            type_trajectory = 'L'
             break
         elif option == 'x':
             sys.exit('Exiting... \n' + '*' * 60)
         else:
             print('Invalid option. Try again.')
-    return x_coordinate, y_coordinate
+    return x_coordinate, y_coordinate, type_trajectory
 
 
 def get_options_main():
     print_header()
-    x, y = get_options_from_user()
-    solution = InverseKinematics(x, y, L1, L2).get_positive_solution()
+    target_x, target_y, type_trajectory = get_options_from_user()
+    solution = InverseKinematics(target_x, target_y, L1, L2).get_positive_solution()
+
     if solution == NoSolutionError:
         sys.exit(Fore.RED + 'Solution does not exist!' + Style.RESET_ALL)
     else:
         theta_1_final, theta_2_final = solution
-    d_theta_1 = (theta_1_final - THETA_1_START) / NET_CYCLES
-    d_theta_2 = (theta_2_final - THETA_2_START) / NET_CYCLES
+
+    trajectory_theta_1 = TrajectoryGenerator(THETA_1_START, theta_1_final, NET_CYCLES)
+    trajectory_theta_2 = TrajectoryGenerator(THETA_2_START, theta_2_final, NET_CYCLES)
+    if type_trajectory == 'L':
+        d_theta_1 = trajectory_theta_1.generate_linear_path()
+        d_theta_2 = trajectory_theta_2.generate_linear_path()
+
     return d_theta_1, d_theta_2
