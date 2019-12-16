@@ -13,6 +13,7 @@ A few options will come up. Here I have selected _C_ which allows me to fill two
 
 ### The mathematics    
 The program starts with two angles:  
+
 <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%20%5Ctheta_i_1%20%3D%200%5E%5Ccirc%5C%5C%20%5Ctheta_i_2%20%3D%200%5E%5Ccirc%20%5Cend%7Balign%7D">  
 <!---
 \begin{align*} 
