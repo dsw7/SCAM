@@ -52,7 +52,6 @@ def main():
             theta_2 += d_theta_2[cycle]
             cycle += 1
 
-
         render_grid()
         SCAM(0, 0, theta_1, theta_2).main()
         pygame.display.flip()
