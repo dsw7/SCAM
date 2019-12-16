@@ -10,17 +10,14 @@ prompt/terminal and input:
     
 The prompt will return the following:  
 
-<img src="https://github.com/dsw7/SCAM/blob/master/SCAM_GOTO/example_UI.png" width="500" align=middle>  
+<img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_goto/example_UI.png" width="500" align=middle>  
 
 <p align="justify">
     A few options will come up. Here I have selected <b>C</b> which  
-allows me to fill two additional fields: <b>X</b> and <b>Y</b>. These fields,  
-not surprisingly, are the 2-dimensional coordinates representing where  
-I want SCAM's end effector to park. In the example, I have selected  
-X = -0.4 and Y = -0.4. Below I depict the result:  
+allows me to fill two additional fields: <b>X</b> and <b>Y</b>. These fields are the 2-dimensional coordinates representing where I want SCAM's end effector to park. In the example, I have selected x = -0.4 and y = -0.4. Below I depict the result:  
 </p>
 
-<img src="https://github.com/dsw7/SCAM/blob/master/SCAM_GOTO/-0.4_-0.4.png">  
+<img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_goto/-0.4_-0.4.png">  
 
 ### The mathematics    
 ---  
