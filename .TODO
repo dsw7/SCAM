@@ -1,2 +1,2 @@
-[1] Need to make parabolic path generator work
+[1] Need to refactor start and end coordinate mechanism. We should start with (x_1, y_1) and end with (x_f, y_f)
 [2] User should be prompted to input a fresh set of coordinates at the end of every 200th cycle
