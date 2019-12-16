@@ -36,4 +36,5 @@ class TrajectoryGenerator:
         return d_theta_normalized
 
     def generate_linear_path(self):
-        return (self.theta_end - self.theta_start) / self.num_cycles
+        d_theta = (self.theta_end - self.theta_start) / self.num_cycles
+        return [d_theta for _ in range(0, self.num_cycles)]

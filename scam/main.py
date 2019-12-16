@@ -48,11 +48,10 @@ def main():
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
 
         if cycle < NET_CYCLES:
+            theta_1 += d_theta_1[cycle]
+            theta_2 += d_theta_2[cycle]
             cycle += 1
-            theta_1 += d_theta_1
-            theta_2 += d_theta_2
-            
-            print(True)
+
 
         render_grid()
         SCAM(0, 0, theta_1, theta_2).main()

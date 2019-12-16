@@ -43,7 +43,7 @@ def get_options_from_user():
         if option == 'c':   # custom input coordinates
             x_coordinate = float(input('x = '))
             y_coordinate = float(input('y = '))
-            type_trajectory = float(input('Trajectory (L / P) = '))
+            type_trajectory = str(input('Trajectory (L / P) = '))
             break
         elif option == 'd': # default input coordinates
             x_coordinate = -0.55
@@ -69,8 +69,14 @@ def get_options_main():
 
     trajectory_theta_1 = TrajectoryGenerator(THETA_1_START, theta_1_final, NET_CYCLES)
     trajectory_theta_2 = TrajectoryGenerator(THETA_2_START, theta_2_final, NET_CYCLES)
-    if type_trajectory == 'L':
-        d_theta_1 = trajectory_theta_1.generate_linear_path()
-        d_theta_2 = trajectory_theta_2.generate_linear_path()
 
-    return d_theta_1, d_theta_2
+    if type_trajectory == 'L':
+        list_d_theta_1 = trajectory_theta_1.generate_linear_path()
+        list_d_theta_2 = trajectory_theta_2.generate_linear_path()
+    elif type_trajectory == 'P':
+        list_d_theta_1 = trajectory_theta_1.generate_parabolic_path()
+        list_d_theta_2 = trajectory_theta_2.generate_parabolic_path()
+    else:
+        sys.exit('Invalid trajectory type specified.')
+
+    return list_d_theta_1, list_d_theta_2
