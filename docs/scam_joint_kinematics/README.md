@@ -8,7 +8,7 @@ as this yields jerk at start and stop positions. Here is a plot
 depicting angle as a function of cycle for this case:  
 </p>
 
-<img src="https://github.com/dsw7/SCAM/blob/master/SCAM_JOINT_KINEMATICS/angle_as_a_function_of_C.png" width="380">  
+<img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_joint_kinematics/angle_as_a_function_of_C.png" width="380">  
 
 <p align="justify">
   Let's call the linear function yielding this result <i>f</i> and let's  
@@ -19,7 +19,7 @@ depicting angle as a function of cycle for this case:
 
 A plot of the first derivative (angular velocity):  
 
-<img src="https://github.com/dsw7/SCAM/blob/master/SCAM_JOINT_KINEMATICS/first_derivative.png" width="380">  
+<img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_joint_kinematics/first_derivative.png" width="380">  
 
 <p align="justify">
 We want to now "convert" this linear relationship to a non-linear  
@@ -33,7 +33,7 @@ to a concave down parabola (here we pass over 100 cycles):
 
 A plot of this function follows (where _k_ = 1.00):  
 
-<img src="https://github.com/dsw7/SCAM/blob/master/SCAM_JOINT_KINEMATICS/first_derivative_unscaled.png" width="380">  
+<img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_joint_kinematics/first_derivative_unscaled.png" width="380">  
 
 <p align="justify">
   Note that the angular velocity is 0 at <i>C</i> = 0 and <i>C</i> = 100.  
@@ -57,7 +57,7 @@ The new parabola follows,
 
 And here is the plot:  
 
-<img src="https://github.com/dsw7/SCAM/blob/master/SCAM_JOINT_KINEMATICS/first_derivative_scaleddown.png" width="380">  
+<img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_joint_kinematics/first_derivative_scaleddown.png" width="380">  
 
 <p align="justify">
   A plot of the cumulative area as a function of <i>C</i> is shown below.  
@@ -66,7 +66,7 @@ Note that here the joint velocity starts at around 0 and ends around
 angles.  
 </p>
 
-<img src="https://github.com/dsw7/SCAM/blob/master/SCAM_JOINT_KINEMATICS/cum_trapezoidal.png" width="380">
+<img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_joint_kinematics/cum_trapezoidal.png" width="380">
 
 
 
