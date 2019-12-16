@@ -11,7 +11,7 @@ maximized at the midpoint between P and Q and minimized near P and Q.
 I show this in the following figure:  
 </p>
 
-<img src="https://github.com/dsw7/SCAM/blob/master/SCAM_TRAJECTORY_GENERATION_MOTION_PLANNING/layout.png" width="500">
+<img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_trajectory_generation_motion_planning/layout.png" width="500">
 
 <p align="justify">
 Notice that both dx and dy are maximized at the midpoint between  
@@ -20,7 +20,7 @@ for the 2R portion of SCAM. We can solve for the first two joint angles
   for all <b>non-linearly</b> spaced x, y coordinates. That is:  
 </p>
 
-<img src="https://github.com/dsw7/SCAM/blob/master/SCAM_TRAJECTORY_GENERATION_MOTION_PLANNING/layout_with_IK.png" width="500">
+<img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_trajectory_generation_motion_planning/layout_with_IK.png" width="500">
 
 <p align="justify">
 This array of angle pairs can then be sent to SCAM's microcontroller.  
@@ -160,7 +160,7 @@ And here is a plot of the actual position of x as a function of t, or:
 
 <img src="https://latex.codecogs.com/gif.latex?%5Cint%20x%27%28t%29dt%3Dx%28t%29%20&plus;%20c">
 
-<img src="https://github.com/dsw7/SCAM/blob/master/SCAM_TRAJECTORY_GENERATION_MOTION_PLANNING/integrated_delinearized.png" width="500">
+<img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_trajectory_generation_motion_planning/integrated_delinearized.png" width="500">
 
 <p align="justified">
 I have shown the position at constant velocity in light gray. Note that both traces for linear and non-linear velocity
