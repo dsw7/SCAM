@@ -1,2 +1,8 @@
-nose
-sphinx
+scipy==1.3.1
+colorama==0.4.1
+pygame==1.9.6
+numpy==1.16.2
+core==1.0.1
+matplotlib==3.1.2
+PyOpenGL==3.1.4
+PyYAML==5.2
