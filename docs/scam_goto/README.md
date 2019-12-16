@@ -5,6 +5,7 @@ Here I show how to make SCAM's end effector travel to some
 coordinates of choosing. To run the script, simply open a  
 prompt/terminal and input:  
 </p>
+
 ```
 $ python3 /scam/main.py  
 ``` 
