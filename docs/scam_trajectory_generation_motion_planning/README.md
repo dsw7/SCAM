@@ -1,42 +1,18 @@
 ### Trajectory Generation and Motion Planning  
----  
 
-<p align="justify">
-Here I describe the mathematics underlying trajectory generation and  
-motion planning for SCAM's end effector. Here I only describe linear  
-trajectories. The general idea is as follows: the end effector starts  
-  at P(x<sub>i</sub>, y<sub>i</sub>, z<sub>i</sub>) and moves to 
-  Q(x<sub>f</sub>, y<sub>f</sub>, z<sub>f</sub>). The velocity is  
-maximized at the midpoint between P and Q and minimized near P and Q.  
-I show this in the following figure:  
-</p>
+Here I describe the mathematics underlying trajectory generation and motion planning for SCAM's end effector. Here I only describe linear trajectories. The general idea is as follows: the end effector starts at _P_(x<sub>i</sub>, y<sub>i</sub>, z<sub>i</sub>) and moves to _Q_(x<sub>f</sub>, y<sub>f</sub>, z<sub>f</sub>). The velocity is maximized at the midpoint between _P_ and _Q_ and minimized near _P_ and _Q_. I show this in the following figure:  
 
 <img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_trajectory_generation_motion_planning/layout.png" width="500">
 
-<p align="justify">
-Notice that both dx and dy are maximized at the midpoint between  
-P and Q. Assume that IK(x, y) is the inverse kinematics algorithm  
-for the 2R portion of SCAM. We can solve for the first two joint angles  
-  for all <b>non-linearly</b> spaced x, y coordinates. That is:  
-</p>
+Notice that both dx and dy are maximized at the midpoint between _P_ and _Q_. Assume that IK(x, y) is the inverse kinematics algorithm for the 2R portion of SCAM. We can solve for the first two joint angles for all **non-linearly** spaced _x_, _y_ coordinates. That is:  
 
 <img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_trajectory_generation_motion_planning/layout_with_IK.png" width="500">
 
-<p align="justify">
-This array of angle pairs can then be sent to SCAM's microcontroller.  
-These angle arguments will force the first two links in SCAM to gently  
-accelerate before reaching the midpoint between P and Q, followed by a  
-gradual deceleration after the midpoint.
-</p>
+This array of angle pairs can then be sent to SCAM's microcontroller. These angle arguments will force the first two links in SCAM to gently accelerate before reaching the midpoint between _P_ and _Q_, followed by a gradual deceleration after the midpoint.
 
 ### How does SCAM plan non-constant velocity motion?
----  
 
-<p align="justify">
-In the above example, the direction of travel can be broken down into
-  both x and y components (z remains constant). We also know that 
-  SCAM iterates over a predefined number of cycles, C. Therefore we find:
-</p>
+In the above example, the direction of travel can be broken down into both _x_ and _y_ components (_z_ remains constant). We also know that SCAM iterates over a predefined number of cycles, _C_. Therefore we find:
 
 <!---
 \begin{align*}
@@ -46,7 +22,7 @@ In the above example, the direction of travel can be broken down into
 --->
 <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%20%5CDelta%20%26x%3D%5Cfrac%7Bx_f%20-%20x_i%7D%7BC%7D%5C%5C%20%5CDelta%20%26y%3D%5Cfrac%7By_f%20-%20y_i%7D%7BC%7D%20%5Cend%7Balign%7D">
 
-We get two arrays of linearly spaced x and y values:
+We get two arrays of linearly spaced _x_ and _y_ values:
 
 <!---
 \begin{bmatrix}
@@ -70,17 +46,12 @@ y_f
 --->
 <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7D%20x_i%5C%5C%20x_i%20&plus;%20%5CDelta%20x%5C%5C%20x_i%20&plus;%202%5CDelta%20x%5C%5C%20x_i%20&plus;%203%5CDelta%20x%5C%5C%20x_i%20&plus;%204%5CDelta%20x%5C%5C%20%5Cvdots%20%5C%5C%20x_f%20%5Cend%7Bbmatrix%7D%2C%20%5Cbegin%7Bbmatrix%7D%20y_i%5C%5C%20y_i%20&plus;%20%5CDelta%20y%5C%5C%20y_i%20&plus;%202%5CDelta%20y%5C%5C%20y_i%20&plus;%203%5CDelta%20y%5C%5C%20y_i%20&plus;%204%5CDelta%20y%5C%5C%20%5Cvdots%20%5C%5C%20y_f%20%5Cend%7Bbmatrix%7D">
 
-Both of which can be imaged to a domain t:
+Both of which can be imaged to a domain _t_:
 
 <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Bbmatrix%7D%20t_1%5C%5C%20t_2%5C%5C%20t_3%5C%5C%20t_4%5C%5C%20t_5%5C%5C%20%5Cvdots%20%5C%5C%20t_n%20%5Cend%7Bbmatrix%7D%20%5Cmapsto%20%5Cbegin%7Bbmatrix%7D%20x_i%5C%5C%20x_i%20&plus;%20%5CDelta%20x%5C%5C%20x_i%20&plus;%202%5CDelta%20x%5C%5C%20x_i%20&plus;%203%5CDelta%20x%5C%5C%20x_i%20&plus;%204%5CDelta%20x%5C%5C%20%5Cvdots%20%5C%5C%20x_f%20%5Cend%7Bbmatrix%7D%2C%20%5Cbegin%7Bbmatrix%7D%20t_1%5C%5C%20t_2%5C%5C%20t_3%5C%5C%20t_4%5C%5C%20t_5%5C%5C%20%5Cvdots%20%5C%5C%20t_n%20%5Cend%7Bbmatrix%7D%20%5Cmapsto%20%5Cbegin%7Bbmatrix%7D%20y_i%5C%5C%20y_i%20&plus;%20%5CDelta%20y%5C%5C%20y_i%20&plus;%202%5CDelta%20y%5C%5C%20y_i%20&plus;%203%5CDelta%20y%5C%5C%20y_i%20&plus;%204%5CDelta%20y%5C%5C%20%5Cvdots%20%5C%5C%20y_f%20%5Cend%7Bbmatrix%7D">
 
-<p align="justified">
-Here, the velocity of the end effector in the x direction and the y direction
-is constant. This raises a serious concern: the acceleration of x and y at the
-start (P) and end (Q) of the path is infinite and negatively infinite, respectively.
-How can this be overcome? An easy solution is to delinearize the velocity. We start
-  by finding the area of a plot of velocity as a function of t via a Riemann sum:
-</p>
+Here, the velocity of the end effector in the x direction and the y direction is constant. This raises a serious concern: the acceleration of _x_ and _y_ at the start (_P_) and end (_Q_) of the path is infinite and negatively infinite, respectively. How can this be overcome? An easy solution is to delinearize the velocity. We start by finding the area of a plot of velocity as a function of _t_ via a Riemann sum:
+
 <!---
 \begin{align*} 
 a_x &= \sum_{i=1}^C t_i\Delta x\\
@@ -93,11 +64,7 @@ We can then fit a concave down parabola and find its area:
 
 <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%20f%28t%29%20%26%3D%20-%28t%20-%201%29%28t%20-%20C%29%5C%5C%20a_p%20%26%3D%20-%5Cint_1%5EC%28t%20-%201%29%28t%20-%20C%29dt%20%5Cend%7Balign%7D">
 
-<p align="justified">
-We want to equalize the area of the parabola to that of the
-Riemann sums, that is: 
-</p>
-
+We want to equalize the area of the parabola to that of the Riemann sums, that is: 
 <!---
 \begin{align*}
 a_x &= -k_x\int_1^C(t - 1)(t - C)dt\\
@@ -107,11 +74,7 @@ a_y &= -k_y\int_1^C(t - 1)(t - C)dt
 
 <img src="https://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%20a_x%20%26%3D%20-k_x%5Cint_1%5EC%28t%20-%201%29%28t%20-%20C%29dt%5C%5C%20a_y%20%26%3D%20-k_y%5Cint_1%5EC%28t%20-%201%29%28t%20-%20C%29dt%20%5Cend%7Balign%7D">
 
-<p align="justified">
-To do so, we find two scalars k, which we have included as normalization
-constants in the above integrals,
-</p>
-
+To do so, we find two scalars _k_, which we have included as normalization constants in the above integrals,
 <!---
 \begin{align*}
 k_x &= \frac{a_x}{a_p}\\
@@ -142,28 +105,19 @@ Note that:
 
 <img src="https://latex.codecogs.com/gif.latex?%5CDelta%20x%20%3D%20%5Cfrac%7B0.5%20-%200.3%7D%7B100%7D%20%3D%200.002">
 
-<p align="justify">
-We want to maximize <img src="https://latex.codecogs.com/gif.latex?%5CDelta%20x"> at the midpoint 
-between P and Q and minimize <img src="https://latex.codecogs.com/gif.latex?%5CDelta%20x"> at P and Q.
-The parabola that fits these requirements follows:
-</p>
+We want to maximize <img src="https://latex.codecogs.com/gif.latex?%5CDelta%20x"> at the midpoint between _P_ and _Q_ and minimize <img src="https://latex.codecogs.com/gif.latex?%5CDelta%20x"> at _P_ and _Q_. The parabola that fits these requirements follows:
 
 <img src="https://latex.codecogs.com/gif.latex?x%27%28t%29%3D-1.237%5Ctimes%2010%5E%7B-6%7D%28t%20-%201%29%28t%20-%20100%29">
 
-<p align="justify">
 A plot of this function is shown below. I have also shown the linear (constant) velocity plot. The areas of both plots are equivalent.
-</p>
 
 <img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_trajectory_generation_motion_planning/de_linearize_plot.png" width="500">
 
-And here is a plot of the actual position of x as a function of t, or:
+And here is a plot of the actual position of _x_ as a function of _t_, or:
 
 <img src="https://latex.codecogs.com/gif.latex?%5Cint%20x%27%28t%29dt%3Dx%28t%29%20&plus;%20c">
 
 <img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_trajectory_generation_motion_planning/integrated_delinearized.png" width="500">
 
-<p align="justified">
-I have shown the position at constant velocity in light gray. Note that both traces for linear and non-linear velocity
-diverge from P and converge to Q. The non-linear case is more appropriate however, as the velocity increases and decreases smoothly thus minimizing jerk.
-</p>
+I have shown the position at constant velocity in light gray. Note that both traces for linear and non-linear velocity diverge from _P_ and converge to _Q_. The non-linear case is more appropriate however, as the velocity increases and decreases smoothly thus minimizing jerk.
                                                                                                                                
