@@ -118,7 +118,6 @@ class SCAM:
         glEnd()
 
     def main(self):
-        render_circle(x=self.x, y=self.y, z=0, radius=0.03)
         self.render_base()
         self.render_first_link()
         self.render_first_joint()

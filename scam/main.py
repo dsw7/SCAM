@@ -9,6 +9,7 @@ from utils.view import set_frustum, set_camera_position
 from utils.lighting import setup_lighting
 from utils.primitives import render_grid
 from utils.manipulator import SCAM
+from utils.manipulator_solid import SCAMSolidRendering
 from utils.frontend import get_options_main
 
 
@@ -24,6 +25,10 @@ HEIGHT = CONSTANTS['view']['height']
 CLIP_PLANE_NEAR = CONSTANTS['view']['clipping_plane_near']
 CLIP_PLANE_FAR = CONSTANTS['view']['clipping_plane_far']
 NET_CYCLES = CONSTANTS['kinematics']['net_cycles']
+TYPE_RENDERING = CONSTANTS['rendering_type']['solid']
+POSITION_CAMERA = CONSTANTS['view']['camera_position']
+POSITION_OBJECT = CONSTANTS['view']['object_position']
+ROTATION_CAMERA = CONSTANTS['view']['camera_rotation']
 
 
 def main():
@@ -32,7 +37,7 @@ def main():
     pygame.display.set_caption('SCAM')
     pygame.display.set_mode((WIDTH, HEIGHT), DOUBLEBUF|OPENGL)
     set_frustum(ANGLE_FOV, WIDTH, HEIGHT, CLIP_PLANE_NEAR, CLIP_PLANE_FAR)
-    set_camera_position()
+    set_camera_position(POSITION_CAMERA, POSITION_OBJECT, ROTATION_CAMERA)
     setup_lighting()
 
     cycle = 0
@@ -53,7 +58,11 @@ def main():
             cycle += 1
 
         render_grid()
-        SCAM(0, 0, theta_1, theta_2).main()
+        if TYPE_RENDERING:
+            SCAMSolidRendering(0, 0, theta_1, theta_2).main()
+        else:
+            SCAM(0, 0, theta_1, theta_2).main()
+
         pygame.display.flip()
         pygame.time.wait(10)
 
