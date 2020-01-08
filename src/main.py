@@ -81,11 +81,12 @@ def loop(x_position, y_position, list_d_x, list_d_y):
 
 
 def main():
-    type_trajectory = input('Trajectory <L/P/None>: ') or 'L'
-    x_start = input('Start x position: ') or 0.5
-    y_start = input('Start y position: ') or 0.5
-    x_end = input('End x position: ') or 0.5
-    y_end = input('End y position: ') or -0.95
+    type_trajectory = input('Input a trajectory type: <L/P/None>: ') or 'L'
+    x_start = input('Start x position (or press Enter to select default value): ') or 0.5
+    y_start = input('Start y position (or press Enter to select default value): ') or 0.5
+    x_end = input('End x position (or press Enter to select default value): ') or 0.5
+    y_end = input('End y position (or press Enter to select default value): ') or -0.95
+    print('Rendering...')
 
     init()
     set_caption('SCAM')
