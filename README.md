@@ -8,7 +8,7 @@ A 3 DOF SCARA style manipulator designed, built and programmed for automating th
 ### Usage
 To run the program, enter:
 ```
-cd /src && python main.py
+cd src/ && python main.py
 ```
 And follow the on screen instructions.
 
