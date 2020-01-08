@@ -5,6 +5,13 @@ Parts of this project may be deprecated/not updated due to a large refactoring i
 ### Description
 A 3 DOF SCARA style manipulator designed, built and programmed for automating the loading of the Corning 353072 96-well microplate. This repository contains code for modelling SCAM forward and inverse kinematics. See individual folders for more information. See the ```docs/``` directory for more information.
 
+### Usage
+To run the program, enter:
+```
+cd /src && python main.py
+```
+And follow the on screen instructions.
+
 ### SCAM Solid OpenGL Rendering:
 <img src="https://github.com/dsw7/SCAM/blob/master/docs/scam_non_wireframe/img_nonwireframe.png">  
 
