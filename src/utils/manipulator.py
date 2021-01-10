@@ -18,7 +18,6 @@ try:
 except FileNotFoundError:
     sys.exit('Missing configuration file!')
 
-
 LENGTH_BASE = CONSTANTS['hardware']['base']['length']
 WIDTH_BASE = CONSTANTS['hardware']['base']['width']
 HEIGHT_BASE = CONSTANTS['hardware']['base']['height']

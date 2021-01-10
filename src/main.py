@@ -18,14 +18,12 @@ from utils.primitives import render_grid
 from utils.manipulator import SCAM
 from utils.manipulator_solid import SCAMSolidRendering
 
-
 try:
     CONSTS_FILE = path.join(path.dirname(__file__), 'utils/constants.yaml')
     with open(CONSTS_FILE) as constants_file:
         CONSTANTS = safe_load(constants_file)
 except FileNotFoundError:
     sys.exit('Missing configuration file!')
-
 
 LENGTH_CUBE_1 = CONSTANTS['hardware']['cube1']['length']
 LENGTH_LINK_2 = CONSTANTS['hardware']['link2']['length']
@@ -46,7 +44,6 @@ TYPE_RENDERING = CONSTANTS['rendering_type']['solid']
 POSITION_CAMERA = CONSTANTS['view']['camera_position']
 POSITION_OBJECT = CONSTANTS['view']['object_position']
 ROTATION_CAMERA = CONSTANTS['view']['camera_rotation']
-
 
 def loop(x_position, y_position, list_d_x, list_d_y):
     cycle = 0
@@ -79,7 +76,6 @@ def loop(x_position, y_position, list_d_x, list_d_y):
         flip()
         wait(10)
 
-
 def main():
     type_trajectory = input('Input a trajectory type: <L/P/None>: ') or 'L'
     x_start = input('Start x position (or press Enter to select default value): ') or 0.5
@@ -106,7 +102,6 @@ def main():
         list_d_y = trajectory_y.generate_linear_path()
 
     loop(x_start, y_start, list_d_x, list_d_y)
-
 
 if __name__ == '__main__':
     main()

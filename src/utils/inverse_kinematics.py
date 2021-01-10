@@ -1,8 +1,10 @@
 from math import atan2, degrees as deg
 
+
 class NoSolutionError(Exception):
     """ Return this error if no solution exists to some set of x, y inputs """
     pass
+
 
 class InverseKinematics:
     """

@@ -39,7 +39,6 @@ FULL_CIRCLE = [(cos(dt), sin(dt)) for dt in linspace(-pi / 2, 3 * pi / 2, 200)]
 RIGHT_SEMICIRCLE = FULL_CIRCLE[0:101]  # add an extra "point" to prevent underfitted connections
 LEFT_SEMICIRCLE = FULL_CIRCLE[99:200]  # add an extra "point" to prevent underfitted connections
 
-
 def render_grid(full=False):
     """
     Sets a grid in the current viewframe.
@@ -68,13 +67,11 @@ def render_grid(full=False):
 
     glColor3f(1.0, 1.0, 1.0)
 
-
 def render_reference_frame(radius=REF_FRAME_RADIUS, slices=REF_FRAME_SLICES, stacks=REF_FRAME_STACKS):
     """ Render a green colored sphere that indicates reference frame """
     glColor3f(0.00, 1.00, 0.00)
     gluSphere(OBJ_QUADRIC, radius, slices, stacks)
     glColor3f(1.00, 1.00, 1.00)
-
 
 def render_circle(x, y, z, radius):
     glBegin(GL_LINE_LOOP)
@@ -85,7 +82,6 @@ def render_circle(x, y, z, radius):
         glVertex3f(a, b, c)
     glEnd()
 
-
 gluQuadricNormals(OBJ_QUADRIC, GLU_SMOOTH)
 def render_cylinder(radius, height, slices=CYLINDER_SLICES, stacks=CYLINDER_STACKS):
     # cylinder calls glNormal3f() under the hood?
@@ -94,7 +90,6 @@ def render_cylinder(radius, height, slices=CYLINDER_SLICES, stacks=CYLINDER_STAC
     glTranslatef(0.00, 0.00, height)                 # translate to top of cylinder
     gluDisk(OBJ_QUADRIC, 0, radius, slices, stacks)  # draw the top cap
     glTranslatef(0.00, 0.00, -height)                # translate back down
-
 
 def render_cube(x=0, y=0, z=0, length=0.1, width=0.1, height=0.1, show_axis_symmetry=True):
     """
@@ -161,7 +156,6 @@ def render_cube(x=0, y=0, z=0, length=0.1, width=0.1, height=0.1, show_axis_symm
         glVertex3f(x - half_l, y, z)
         glEnd()
         glColor3f(1.00, 1.00, 1.00)
-
 
 def render_cuboid(x=0, y=0, z=0, length=0.1, width=0.1, height=0.1):
     """
@@ -234,7 +228,6 @@ def render_cuboid(x=0, y=0, z=0, length=0.1, width=0.1, height=0.1):
     glVertex3f(x + length, y + half_w, z)
     glVertex3f(x + length, y - half_w, z)
     glEnd()
-
 
 def render_link(x=0.0, y=0.0, r=0.1, h=0.1, l=0.2):
     """
@@ -348,4 +341,3 @@ def render_link(x=0.0, y=0.0, r=0.1, h=0.1, l=0.2):
     glEnd()
 
     glTranslatef(x - l, 0.0, 0.0)
-
